@@ -17,4 +17,8 @@ public class Pilot extends Person {
         return licenseNumber;
     }
 
+    public String flyPlane() {
+        return "Attention passengers, this is your captain speaking. We are now at our cruising altitude of 50 meters";
+    }
+
 }

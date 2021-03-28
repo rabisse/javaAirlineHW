@@ -12,10 +12,10 @@ public class Flight {
     private Airport destination;
     private String departureTime;
 
-    public Flight(Plane plane, ArrayList<Pilot> pilots, ArrayList<CabinCrewmember> cabinCrewmembers, String flightNumber, Airport departingFrom, Airport destination,String departureTime) {
+    public Flight(Plane plane, String flightNumber, Airport departingFrom, Airport destination,String departureTime) {
         this.plane = plane;
-        this.pilots = pilots;
-        this.cabinCrewmembers = cabinCrewmembers;
+        this.pilots = new ArrayList<>();
+        this.cabinCrewmembers = new ArrayList<>();
         this.passengers = new ArrayList<>();
         this.flightNumber = flightNumber;
         this.departingFrom = departingFrom;
@@ -32,8 +32,14 @@ public class Flight {
         return pilots;
     }
 
+    public int numberOfPilots() {
+        return this.pilots.size();
+    }
+
     public void addPilot(Pilot pilotToAdd) {
-        this.pilots.add(pilotToAdd);
+        if (this.remainingSpotsOnPlane() > 0) {
+            this.pilots.add(pilotToAdd);
+        }
     }
 
     public void removePilot(Pilot pilotToRemove) {
@@ -44,8 +50,14 @@ public class Flight {
         return cabinCrewmembers;
     }
 
+    public int numberOfCrewmembers() {
+        return this.cabinCrewmembers.size();
+    }
+
     public void addCrewmember(CabinCrewmember newCrewmember) {
-        this.cabinCrewmembers.add(newCrewmember);
+        if (this.remainingSpotsOnPlane() > 0) {
+            this.cabinCrewmembers.add(newCrewmember);
+        }
     }
 
     public void removeCrewmember(CabinCrewmember crewmemberToRemove) {
@@ -56,8 +68,14 @@ public class Flight {
         return passengers;
     }
 
+    public int numberOfPassengers() {
+        return this.passengers.size();
+    }
+
     public void addPassenger(Passenger passengerToAdd) {
-        this.passengers.add(passengerToAdd);
+        if (this.remainingSpotsOnPlane() > 0) {
+            this.passengers.add(passengerToAdd);
+        }
     }
 
     public void removePassenger(Passenger passengerToRemove) {
@@ -84,6 +102,13 @@ public class Flight {
         this.departureTime = departureTime;
     }
 
+    public int numberOfPeopleOnFlight() {
+        return numberOfPilots() + numberOfCrewmembers() + numberOfPassengers();
+    }
+
+    public int remainingSpotsOnPlane() {
+        return plane.getCapacity() - numberOfPeopleOnFlight();
+    }
 
 
 }
