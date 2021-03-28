@@ -19,7 +19,7 @@ public class Pilot extends Person {
 
     public String flyPlane(Flight flight) {
         if (flight.numberOfPilots() != 0) {
-        return "Attention passengers, this is your captain speaking. We are now at our cruising altitude of 50 meters";
+        return "Attention passengers, this is your captain " + this.getName() + " speaking. We are now at our cruising altitude of 50 meters";
         }
         return "You need a pilot to fly this plane!";
     }

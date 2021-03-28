@@ -25,7 +25,7 @@ public class PilotTest {
         pilot = new Pilot("Paul", Rank.CAPTAIN, "ABC123");
         flight = new Flight(plane, "AA100", Airport.GLA, Airport.ORD, "12:00");
         flight.addPilot(pilot);
-        assertEquals("Attention passengers, this is your captain speaking. We are now at our cruising altitude of 50 meters", pilot.flyPlane(flight));
+        assertEquals("Attention passengers, this is your captain Paul speaking. We are now at our cruising altitude of 50 meters", pilot.flyPlane(flight));
     }
 
     @Test
