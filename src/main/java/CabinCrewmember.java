@@ -11,5 +11,8 @@ public class CabinCrewmember extends Person {
         return rank;
     }
 
+    public String relayMessage(String message) {
+        return message;
+    }
 
 }

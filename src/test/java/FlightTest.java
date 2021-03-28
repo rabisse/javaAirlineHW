@@ -18,7 +18,7 @@ public class FlightTest {
 
     @Before
     public void before() {
-        plane = new Plane("BOING100", 5);
+        plane = new Plane("BOING100", 5, 1000);
         pilot1 = new Pilot("Paul", Rank.CAPTAIN, "ABC123");
         pilot2 = new Pilot("Paulina", Rank.CAPTAIN, "XYZ789");
         crewmember1 = new CabinCrewmember("Coraline", Rank.FLIGHTATTENDANT);
@@ -53,6 +53,22 @@ public class FlightTest {
         assertEquals(5, flight.numberOfPeopleOnFlight());
     }
 
+    @Test
+    public void willNotOverBook() {
+        flight.addPilot(pilot2);
+        flight.addCrewmember(crewmember2);
+        flight.addPassenger(passenger1);
+        flight.addPassenger(passenger2);
+        assertEquals(5, flight.numberOfPeopleOnFlight());
+    }
 
+    @Test
+    public void canRemovePilotCrewmemberPassenger() {
+        flight.addPassenger(passenger1);
+        flight.removePassenger(passenger1);
+        flight.removeCrewmember(crewmember1);
+        flight.removePilot(pilot1);
+        assertEquals(0, flight.numberOfPeopleOnFlight());
+    }
 
 }

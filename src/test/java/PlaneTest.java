@@ -9,7 +9,7 @@ public class PlaneTest {
 
     @Before
     public void before() {
-        plane = new Plane("BOING100", 4);
+        plane = new Plane("BOING100", 4, 1000);
     }
 
     @Test
@@ -20,6 +20,11 @@ public class PlaneTest {
     @Test
     public void hasCapacity() {
         assertEquals(4, plane.getCapacity());
+    }
+
+    @Test
+    public void hasTotalWeight() {
+        assertEquals(1000, plane.getTotalWeight());
     }
 
 }
